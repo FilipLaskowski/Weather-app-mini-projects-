@@ -12,7 +12,12 @@ const api = {
 function App() {
   // States
   const [query, setQuery] = useState("Paris");
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState({
+    name: "None",
+    sys: { country: "None" },
+    main: { temp: "None" },
+    weather: [{ description: "None" }],
+  });
   const [notFound, setNoFound] = useState();
   // Effects
   useEffect(() => {
@@ -26,7 +31,6 @@ function App() {
         }
         if (res.status === 404) {
           setNoFound(true);
-          return;
         }
         if (res.status === 400) {
           setNoFound(true);
